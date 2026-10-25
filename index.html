@@ -3,804 +3,205 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luma Frame | Photography</title>
+    <title>Kumkum | Devi Banaras | Photographer</title>
     <meta
       name="description"
-      content="Modern photography website for portraits, weddings, travel, and editorial storytelling."
+      content="Kumkum, also known as Devi Banaras, is a Delhi-based researcher, traveller, and photographer capturing stories through light, place, and memory."
     />
-    <style>
-      :root {
-        --bg: #0d0d0f;
-        --bg-soft: #141418;
-        --panel: rgba(255, 255, 255, 0.04);
-        --text: #f5f5f2;
-        --muted: #c5c2bc;
-        --gold: #d4af6a;
-        --gold-soft: #f2d9a5;
-        --line: rgba(255, 255, 255, 0.12);
-        --shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .container {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .section {
-        padding: 110px 0;
-      }
-
-      .eyebrow {
-        color: var(--gold-soft);
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        font-size: 0.72rem;
-        font-weight: 700;
-      }
-
-      .title {
-        font-size: clamp(2.2rem, 4vw, 4rem);
-        line-height: 1.1;
-        margin: 16px 0 20px;
-        letter-spacing: -0.04em;
-      }
-
-      .lead {
-        color: var(--muted);
-        font-size: 1.05rem;
-        max-width: 660px;
-      }
-
-      .button-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 30px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 52px;
-        padding: 0 24px;
-        border-radius: 999px;
-        font-weight: 700;
-        transition: 0.25s ease;
-        border: 1px solid transparent;
-      }
-
-      .btn.primary {
-        background: var(--gold);
-        color: #16130d;
-      }
-
-      .btn.primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 40px rgba(212, 175, 106, 0.28);
-      }
-
-      .btn.secondary {
-        border-color: rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.02);
-        color: var(--text);
-      }
-
-      .btn.secondary:hover {
-        border-color: rgba(255, 255, 255, 0.4);
-        background: rgba(255, 255, 255, 0.06);
-      }
-
-      /* Header */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(18px);
-        background: rgba(13, 13, 15, 0.7);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 82px;
-      }
-
-      .brand {
-        font-size: 1.2rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .brand span {
-        color: var(--gold);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 28px;
-        align-items: center;
-        color: var(--muted);
-      }
-
-      .nav-links a {
-        transition: color 0.2s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--text);
-      }
-
-      .nav-cta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      /* Hero */
-      .hero {
-        position: relative;
-        min-height: 760px;
-        display: flex;
-        align-items: center;
-        background:
-          linear-gradient(90deg, rgba(10, 10, 12, 0.82), rgba(10, 10, 12, 0.52)),
-          url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80")
-            center/cover no-repeat;
-      }
-
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        align-items: center;
-        gap: 50px;
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .hero-copy {
-        max-width: 640px;
-      }
-
-      .hero-copy .title {
-        font-size: clamp(3rem, 7vw, 6rem);
-      }
-
-      .hero-copy .lead {
-        font-size: 1.12rem;
-        max-width: 560px;
-      }
-
-      .meta-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--muted);
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .meta-pill::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        background: var(--gold);
-        border-radius: 50%;
-        display: inline-block;
-      }
-
-      .hero-panel {
-        background: rgba(14, 14, 17, 0.72);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 24px;
-        box-shadow: var(--shadow);
-      }
-
-      .hero-panel-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 18px;
-        min-height: 470px;
-        background:
-          linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.3)),
-          url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80")
-            center/cover no-repeat;
-      }
-
-      .hero-badge {
-        position: absolute;
-        right: 18px;
-        bottom: 18px;
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        padding: 12px 16px;
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
-      }
-
-      .hero-badge strong {
-        display: block;
-        font-size: 1.6rem;
-        line-height: 1.1;
-      }
-
-      .hero-badge span {
-        color: var(--muted);
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      /* Stats row */
-      .stats {
-        background: var(--bg-soft);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 24px;
-        padding: 32px 0;
-      }
-
-      .stat {
-        padding: 28px 20px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: rgba(255,255,255,0.02);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 1;
-        margin-bottom: 8px;
-      }
-
-      .stat span {
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.72rem;
-      }
-
-      /* About */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 54px;
-        align-items: center;
-      }
-
-      .about-media {
-        position: relative;
-        border-radius: 26px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-      }
-
-      .about-media img {
-        width: 100%;
-        height: 700px;
-        object-fit: cover;
-      }
-
-      .about-card {
-        position: absolute;
-        right: -20px;
-        bottom: 28px;
-        background: rgba(15, 15, 18, 0.9);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px 20px;
-        width: min(240px, 60%);
-      }
-
-      .about-card strong {
-        display: block;
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-      }
-
-      .about-card span {
-        color: var(--muted);
-      }
-
-      .about-copy .lead {
-        margin-bottom: 20px;
-      }
-
-      .feature-list {
-        display: grid;
-        gap: 14px;
-        margin-top: 28px;
-      }
-
-      .feature-item {
-        display: flex;
-        gap: 12px;
-        align-items: start;
-      }
-
-      .feature-item .dot {
-        width: 10px;
-        height: 10px;
-        background: var(--gold);
-        border-radius: 50%;
-        margin-top: 9px;
-        flex-shrink: 0;
-      }
-
-      .feature-item p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      /* Gallery */
-      .gallery-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 20px;
-        margin-bottom: 34px;
-      }
-
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .photo-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 22px;
-        min-height: 420px;
-        border: 1px solid var(--line);
-        background: #111;
-      }
-
-      .photo-card.large {
-        grid-column: span 2;
-        min-height: 520px;
-      }
-
-      .photo-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
-      }
-
-      .photo-card:hover img {
-        transform: scale(1.06);
-      }
-
-      .photo-card .overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.64));
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        padding: 22px;
-      }
-
-      .photo-card .tag {
-        display: inline-flex;
-        align-self: flex-start;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.18);
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: white;
-      }
-
-      .photo-card h3 {
-        margin: 10px 0 0;
-        font-size: clamp(1.2rem, 2vw, 2rem);
-      }
-
-      /* Services */
-      .services-wrap {
-        background: var(--bg-soft);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .service-card {
-        padding: 30px 24px;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-      }
-
-      .service-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(212, 175, 106, 0.12);
-        color: var(--gold-soft);
-        font-size: 1.8rem;
-        margin-bottom: 18px;
-      }
-
-      .service-card h3 {
-        margin: 0 0 10px;
-        font-size: 1.5rem;
-      }
-
-      .service-card p {
-        color: var(--muted);
-        margin: 0;
-      }
-
-      /* Testimonials */
-      .testimonials {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .quote {
-        padding: 28px 22px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: rgba(255,255,255,0.02);
-      }
-
-      .quote p {
-        color: var(--text);
-        font-size: 1.08rem;
-        margin: 0 0 20px;
-      }
-
-      .person {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .avatar {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        overflow: hidden;
-        background: #111;
-      }
-
-      .avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .person strong {
-        display: block;
-      }
-
-      .person span {
-        color: var(--muted);
-        font-size: 0.82rem;
-      }
-
-      /* CTA */
-      .cta-box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 24px;
-        padding: 36px 38px;
-        background:
-          linear-gradient(135deg, rgba(212,175,106,0.15), rgba(255,255,255,0.02)),
-          rgba(255,255,255,0.02);
-        border: 1px solid var(--line);
-        border-radius: 26px;
-      }
-
-      .cta-box h3 {
-        margin: 0 0 8px;
-        font-size: clamp(1.8rem, 3vw, 3rem);
-      }
-
-      .cta-box p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      /* Footer */
-      footer {
-        padding: 32px 0 60px;
-        color: var(--muted);
-      }
-
-      .footer-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        border-top: 1px solid var(--line);
-        padding-top: 20px;
-      }
-
-      .socials {
-        display: flex;
-        gap: 18px;
-      }
-
-      .socials a:hover {
-        color: var(--text);
-      }
-
-      @media (max-width: 900px) {
-        .hero-inner,
-        .about-grid,
-        .gallery-grid,
-        .services-grid,
-        .testimonials {
-          grid-template-columns: 1fr;
-        }
-
-        .hero {
-          min-height: 680px;
-          padding: 50px 0;
-        }
-
-        .hero-copy .title {
-          font-size: clamp(2.6rem, 14vw, 5rem);
-        }
-
-        .gallery-grid .photo-card.large {
-          grid-column: span 1;
-          min-height: 420px;
-        }
-
-        .cta-box {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .nav-links {
-          display: none;
-        }
-      }
-
-      @media (max-width: 620px) {
-        .stats-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .nav-cta .btn {
-          display: none;
-        }
-
-        .hero-panel {
-          display: none;
-        }
-
-        .about-media img {
-          height: 540px;
-        }
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <div class="container nav">
-        <a href="#" class="brand">Luma <span>Frame</span></a>
+        <a href="#top" class="brand" aria-label="Kumkum home">
+          <span class="brand-main">Kumkum</span>
+          <span class="brand-sub">Devi Banaras</span>
+        </a>
 
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#about">About</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#services">Services</a>
-          <a href="#reviews">Reviews</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#journey">Journey</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <div class="nav-cta">
-          <a href="#contact" class="btn secondary">Book a Session</a>
-        </div>
+        <a href="#contact" class="btn btn-outline">Book a Session</a>
       </div>
     </header>
 
-    <main>
+    <main id="top">
       <section class="hero">
-        <div class="hero-inner">
+        <div class="container hero-inner">
           <div class="hero-copy">
-            <div class="meta-pill">Award-winning photography</div>
-            <h1 class="title">Stories told in light.</h1>
+            <p class="eyebrow">Photographer • Researcher • Traveller</p>
+            <h1>Stories shaped by light, place and memory.</h1>
             <p class="lead">
-              We create timeless imagery for couples, families, and brands with cinematic
-              storytelling, natural direction, and richly detailed compositions.
+              I’m Kumkum, based in Delhi, and I create visual stories that blend
+              travel, research, and photography. My work explores culture,
+              movement, emotion, and the quiet beauty of everyday life.
             </p>
+
             <div class="button-row">
-              <a href="#gallery" class="btn primary">View Portfolio</a>
-              <a href="#contact" class="btn secondary">Get a Quote</a>
+              <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+              <a href="#contact" class="btn btn-secondary">Enquire Now</a>
             </div>
+
+            <ul class="hero-meta">
+              <li>Based in Delhi, India</li>
+              <li>Portrait • Travel • Editorial</li>
+            </ul>
           </div>
 
-          <div class="hero-panel" aria-label="Featured image">
-            <div class="hero-panel-card">
-              <div class="hero-badge">
-                <strong>12k+</strong>
-                <span>Shots captured</span>
+          <div class="hero-visual">
+            <div class="featured-card">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
+                alt="Portrait photography in natural light"
+              />
+              <div class="featured-badge">
+                <strong>Delhi</strong>
+                <span>Stories from the road</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="stats" aria-label="Photography statistics">
+      <section class="stats">
         <div class="container stats-grid">
           <div class="stat">
-            <strong>1200+</strong>
-            <span>Sessions</span>
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Years of visual storytelling</span>
           </div>
           <div class="stat">
-            <strong>8</strong>
-            <span>Years</span>
+            <span class="stat-number">350+</span>
+            <span class="stat-label">Frames captured</span>
           </div>
           <div class="stat">
-            <strong>42</strong>
-            <span>Countries</span>
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Cities explored</span>
           </div>
           <div class="stat">
-            <strong>96%</strong>
-            <span>Repeat clients</span>
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Personalised storytelling</span>
           </div>
         </div>
       </section>
 
       <section id="about" class="section">
         <div class="container about-grid">
-          <div class="about-media">
+          <div class="about-image-wrap">
             <img
-              src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1000&q=80"
-              alt="Photographer taking a portrait"
+              src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80"
+              alt="Photographer at work"
             />
-            <div class="about-card">
-              <strong>11</strong>
-              <span>national awards for visual storytelling</span>
+            <div class="floating-note">
+              <strong>Research-driven</strong>
+              <span>image-making with intention</span>
             </div>
           </div>
 
-          <div class="about-copy">
-            <div class="eyebrow">About us</div>
-            <h2 class="title">Photography that feels personal.</h2>
-            <p class="lead">
-              We blend documentary honesty with refined editorial techniques to capture
-              moments that feel natural, authentic, and beautifully alive. Every frame is
-              designed to reflect your story with elegance and emotional depth.
+          <div class="about-content">
+            <p class="eyebrow">About</p>
+            <h2>Capturing the world with curiosity and depth.</h2>
+            <p>
+              I am a photographer, traveller, and researcher who believes every
+              image should carry meaning. My work is shaped by exploration,
+              observation, and a deep love for people, places, and lived
+              experiences.
+            </p>
+            <p>
+              Whether I am photographing a story in Delhi or documenting a
+              journey across landscapes, I aim to create images that are honest,
+              atmospheric, and emotionally resonant.
             </p>
 
             <div class="feature-list">
               <div class="feature-item">
                 <span class="dot"></span>
-                <p>Creative direction rooted in emotion, atmosphere, and light.</p>
+                <p>Documentary and editorial visual storytelling</p>
               </div>
               <div class="feature-item">
                 <span class="dot"></span>
-                <p>Tailored experience for weddings, portraits, travel, and commercial work.</p>
+                <p>Travel narratives with a cinematic, reflective mood</p>
               </div>
               <div class="feature-item">
                 <span class="dot"></span>
-                <p>Thoughtful post-production for timeless, polished imagery.</p>
+                <p>Portraits rooted in personality, emotion, and context</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="gallery" class="section">
+      <section id="portfolio" class="section portfolio">
         <div class="container">
-          <div class="gallery-header">
+          <div class="section-heading">
             <div>
-              <div class="eyebrow">Selected work</div>
-              <h2 class="title">Our latest stories.</h2>
+              <p class="eyebrow">Portfolio</p>
+              <h2>Selected stories.</h2>
             </div>
-            <a href="#contact" class="btn secondary">Book Your Session</a>
+            <a href="#contact" class="btn btn-outline">Inquire</a>
           </div>
 
           <div class="gallery-grid">
-            <article class="photo-card large">
+            <article class="photo-card photo-card-large">
               <img
                 src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80"
-                alt="Couple embracing outdoors"
+                alt="Couple in a travel portrait"
               />
-              <div class="overlay">
-                <span class="tag">Wedding</span>
-                <h3>Coastal vows</h3>
+              <div class="photo-overlay">
+                <span class="tag">Travel</span>
+                <h3>Along the road</h3>
               </div>
             </article>
 
             <article class="photo-card">
               <img
                 src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80"
-                alt="Portrait of a woman in soft light"
+                alt="Portrait photography"
               />
-              <div class="overlay">
+              <div class="photo-overlay">
                 <span class="tag">Portrait</span>
-                <h3>Quiet confidence</h3>
+                <h3>Quiet strength</h3>
               </div>
             </article>
 
             <article class="photo-card">
               <img
                 src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-                alt="Traveler with scenic mountain view"
+                alt="Travel landscape photography"
               />
-              <div class="overlay">
-                <span class="tag">Travel</span>
-                <h3>Mountain air</h3>
+              <div class="photo-overlay">
+                <span class="tag">Landscape</span>
+                <h3>Open horizons</h3>
               </div>
             </article>
 
             <article class="photo-card">
               <img
                 src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=900&q=80"
-                alt="Family on an adventure"
+                alt="Candid family photography"
               />
-              <div class="overlay">
+              <div class="photo-overlay">
                 <span class="tag">Family</span>
-                <h3>Golden hour</h3>
+                <h3>Everyday rituals</h3>
               </div>
             </article>
 
             <article class="photo-card">
               <img
                 src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80"
-                alt="Editorial style fashion portrait"
+                alt="Editorial portrait"
               />
-              <div class="overlay">
+              <div class="photo-overlay">
                 <span class="tag">Editorial</span>
                 <h3>Modern muse</h3>
               </div>
@@ -809,104 +210,95 @@
         </div>
       </section>
 
-      <section id="services" class="services-wrap section">
+      <section id="journey" class="section process">
         <div class="container">
-          <div class="eyebrow">What we do</div>
-          <h2 class="title">Photography tailored to your moments.</h2>
+          <p class="eyebrow">Approach</p>
+          <h2>Photography shaped by research and feeling.</h2>
 
-          <div class="services-grid">
-            <article class="service-card">
-              <div class="service-icon">✦</div>
-              <h3>Weddings</h3>
+          <div class="process-grid">
+            <article class="process-card">
+              <div class="icon">01</div>
+              <h3>Observe</h3>
               <p>
-                Thoughtful coverage for every emotional beat, from quiet details to moving
-                vows and lively celebration.
+                I begin by listening to the story and understanding the
+                atmosphere, people, and place that define the moment.
               </p>
             </article>
 
-            <article class="service-card">
-              <div class="service-icon">◌</div>
-              <h3>Portraits</h3>
+            <article class="process-card">
+              <div class="icon">02</div>
+              <h3>Frame</h3>
               <p>
-                Intentional, expressive sessions that reveal character, confidence, and
-                atmosphere in every frame.
+                Light, composition, and human connection guide the frame, allowing
+                each image to feel natural and intentional.
               </p>
             </article>
 
-            <article class="service-card">
-              <div class="service-icon">△</div>
-              <h3>Travel</h3>
+            <article class="process-card">
+              <div class="icon">03</div>
+              <h3>Deliver</h3>
               <p>
-                Visual narratives that transform destinations into memories—lush, immersive,
-                and deeply personal.
+                Final edits are refined with clarity and emotion, resulting in a
+                collection that feels personal and lasting.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="reviews" class="section">
+      <section class="section testimonials">
         <div class="container">
-          <div class="eyebrow">Testimonials</div>
-          <h2 class="title">Loved by clients worldwide.</h2>
+          <p class="eyebrow">Client words</p>
+          <h2>Trusted for meaningful images.</h2>
 
-          <div class="testimonials">
+          <div class="testimonial-grid">
             <article class="quote">
               <p>
-                “The images felt like us—honest, warm, and full of life. Every frame told a
-                beautiful story we’ll treasure forever.”
+                “Kumkum’s photographs feel deeply personal and thoughtful. Every
+                frame carries emotion, atmosphere, and a beautiful sense of place.”
               </p>
-
               <div class="person">
-                <div class="avatar">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
-                    alt="Client portrait"
-                  />
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+                  alt="Client profile"
+                />
                 <div>
-                  <strong>Ana & Marco</strong>
-                  <span>Wedding clients</span>
+                  <strong>Riya S.</strong>
+                  <span>Portrait client</span>
                 </div>
               </div>
             </article>
 
             <article class="quote">
               <p>
-                “Our family session was relaxed, joyful, and beautifully guided. The final
-                gallery felt editorial yet deeply personal.”
+                “The travel images were not just beautiful — they reflected the
+                soul of the experience. The storytelling was exceptional.”
               </p>
-
               <div class="person">
-                <div class="avatar">
-                  <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-                    alt="Client portrait"
-                  />
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+                  alt="Client profile"
+                />
                 <div>
-                  <strong>Daniel K.</strong>
-                  <span>Family portrait</span>
+                  <strong>Arjun M.</strong>
+                  <span>Travel story</span>
                 </div>
               </div>
             </article>
 
             <article class="quote">
               <p>
-                “From concept to final delivery, the attention to detail was exceptional.
-                Their work feels elevated and emotionally resonant.”
+                “Professional, gentle, and incredibly perceptive. The work felt
+                elegant, personal, and completely aligned with our vision.”
               </p>
-
               <div class="person">
-                <div class="avatar">
-                  <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
-                    alt="Client portrait"
-                  />
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
+                  alt="Client profile"
+                />
                 <div>
-                  <strong>Sarah L.</strong>
-                  <span>Brand campaign</span>
+                  <strong>Sana K.</strong>
+                  <span>Editorial shoot</span>
                 </div>
               </div>
             </article>
@@ -914,37 +306,75 @@
         </div>
       </section>
 
-      <section id="contact" class="section">
-        <div class="container">
-          <div class="cta-box">
-            <div>
-              <div class="eyebrow">Let’s create</div>
-              <h3>Tell us about your next story.</h3>
-              <p>Available for weddings, portraits, editorial, and travel commissions.</p>
+      <section id="contact" class="section contact">
+        <div class="container contact-wrap">
+          <div class="contact-card">
+            <p class="eyebrow">Contact</p>
+            <h2>Let’s create something meaningful.</h2>
+            <p>
+              Available for portrait, travel, editorial, and personal storytelling
+              commissions. Based in Delhi, India.
+            </p>
+
+            <div class="contact-details">
+              <a href="mailto:kphotography.du@gmail.com">kphotography.du@gmail.com</a>
+              <span>Delhi, India</span>
             </div>
-
-            <a href="mailto:hello@lumaframe.studio" class="btn primary">hello@lumaframe.studio</a>
           </div>
+
+          <form class="contact-form" id="contactForm">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Your email" required />
+            </label>
+
+            <label>
+              Project Type
+              <select name="type">
+                <option>Portrait</option>
+                <option>Travel</option>
+                <option>Editorial</option>
+                <option>Wedding / Couple</option>
+                <option>Custom Project</option>
+              </select>
+            </label>
+
+            <label>
+              Message
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me about your idea, date, or story..."
+                required
+              ></textarea>
+            </label>
+
+            <button type="submit" class="btn btn-primary">Send Inquiry</button>
+          </form>
         </div>
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="container footer-row">
-        <div class="brand">Luma <span>Frame</span></div>
-
-        <div class="socials" aria-label="Social links">
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">Pinterest</a>
+        <div class="brand">
+          <span class="brand-main">Kumkum</span>
+          <span class="brand-sub">Devi Banaras</span>
         </div>
 
-        <div>© <span id="year"></span> Luma Frame</div>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.behance.net" target="_blank" rel="noreferrer">Behance</a>
+          <a href="mailto:kphotography.du@gmail.com">Email</a>
+        </div>
+
+        <p>© <span id="year"></span> Kumkum | Delhi</p>
       </div>
     </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>
