@@ -1,4 +1,4 @@
-# Kumkum | Devi Banaras Photography
+# Devi Banaras Photography
 
 A personal photography portfolio website for Kumkum, based in Delhi, India. The site presents a refined, cinematic aesthetic and highlights her work as a researcher, traveller, and photographer.
 
